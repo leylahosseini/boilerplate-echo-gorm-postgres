@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=leyla
+      - POSTGRES_PASSWORD=leyla
+      - POSTGRES_DB=todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  go-tasks:
+#    image: 
+    build: ./
+    container_name: go-tasks
+    restart: on-failure
+    ports:
+        - "8080:8080"
+    links:
+      - postgres
+    depends_on:
+      - postgres
+#    env_file:
+#       - .env
+
+

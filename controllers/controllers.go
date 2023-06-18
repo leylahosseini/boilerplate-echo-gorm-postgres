@@ -22,6 +22,9 @@ func TaskPost(c echo.Context) error {
 	if err := c.Bind(task); err != nil {
 		return err
 	}
+	if task.Name == "" {
+		return c.JSON(http.StatusBadRequest, "Name field cannot to be empty")
+	}
 	db.Create(&task)
 	return c.JSON(http.StatusCreated, task)
 }

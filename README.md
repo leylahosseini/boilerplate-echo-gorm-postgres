@@ -1,4 +1,4 @@
-# boilerplate-echo-gorm-postgres
+# echo gorm postgres
 
 curl -X POST localhost:8080/tasks    -d '{"name":"task1" , "description":"task1" , "completed":true}'   --header "Content-Type: application/json"
 

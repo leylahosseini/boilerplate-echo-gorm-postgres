@@ -11,10 +11,10 @@ func main() {
 	// Initialize Echo
 
 	e := echo.New()
-
-	routes.InitRoutes(e)
 	// Middleware
 	e.Use(middleware.Logger())
+	
+	routes.InitRoutes(e)
 
 	e.Start(":8080")
 
